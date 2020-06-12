@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const WineComponents = ({ id, isLoading, setIsLoading }) => {
+const WineComponents = ({
+  id,
+  isLoading,
+  setIsLoading,
+  lotCode,
+  description
+}) => {
   const [selectedComponent, setSelectedComponent] = useState('year');
   const [breakDown, setBreakDown] = useState([]);
 
@@ -45,6 +51,10 @@ const WineComponents = ({ id, isLoading, setIsLoading }) => {
   return (
     !isLoading && (
       <div className="components">
+        <h3>Lot Code</h3>
+        <p>{lotCode}</p>
+        <h3>Description</h3>
+        <p>{description}</p>
         <h3>Components</h3>
         <div className="component-types">
           <ul>

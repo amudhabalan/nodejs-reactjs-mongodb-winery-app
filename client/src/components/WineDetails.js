@@ -1,8 +1,9 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import wineImage from './img/wine.jpg';
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
 import WineComponents from './WineComponents';
+import loader from './img/loader.gif';
 
 const WineDetails = () => {
   const [wineDetails, setWineDetails] = useState([]);
@@ -27,30 +28,43 @@ const WineDetails = () => {
     fetchData();
   }, [id]);
 
-  return (
+  return !isLoading ? (
     <section className="wine-details">
-      {!isLoading && (
-        <Fragment>
-          <Link to="/">Back</Link>
-          <div className="details">
-            <img src={wineImage} className="wine-image" alt="Wine" />
-            <WineComponents
-              id={id}
-              isLoading={isLoading}
-              setIsLoading={setIsLoading}
-            />
-            <div className="others">
-              <p>Lot Code : {wineDetails.lotCode}</p>
-              <p>Volume : {wineDetails.volume}</p>
-              <p>Description : {wineDetails.description}</p>
-              <p>Tank Code : {wineDetails.tankCode}</p>
-              <p>Product State : {wineDetails.productState}</p>
-              <p>Owner Name : {wineDetails.ownerName}</p>
-            </div>
-          </div>
-        </Fragment>
-      )}
+      <Link to="/">Back</Link>
+      <div className="details">
+        <img src={wineImage} className="wine-image" alt="Wine" />
+        <WineComponents
+          id={id}
+          isLoading={isLoading}
+          setIsLoading={setIsLoading}
+          lotCode={wineDetails.lotCode !== null ? wineDetails.lotCode : 'NA'}
+          description={
+            wineDetails.description !== null ? wineDetails.description : 'NA'
+          }
+        />
+        <div className="others">
+          <p>
+            Volume : {wineDetails.volume !== null ? wineDetails.volume : 'NA'}
+          </p>
+          <p>
+            Tank Code :{' '}
+            {wineDetails.tankCode !== null ? wineDetails.tankCode : 'NA'}
+          </p>
+          <p>
+            State :{' '}
+            {wineDetails.productState !== null
+              ? wineDetails.productState
+              : 'NA'}
+          </p>
+          <p>
+            Owner :{' '}
+            {wineDetails.ownerName !== null ? wineDetails.ownerName : 'NA'}
+          </p>
+        </div>
+      </div>
     </section>
+  ) : (
+    <img src={loader} alt="loading"></img>
   );
 };
 

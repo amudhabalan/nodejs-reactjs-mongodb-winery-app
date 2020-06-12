@@ -57,22 +57,23 @@ a {
 
 .form-group {
   width: 100%;
-  padding: 10px;
+  padding: 20px;
   margin: 15px 0px;
+  background: #333;
+  border-radius: 5px;
 }
 
 .form-group input {
   width: 100%;
   font-size: 1rem;
   border: 0.5px solid #333;
-  border-radius: 8px;
+  border-radius: 5px;
   padding: 10px;
   margin-right: 15px;
   color: #333;
 }
 
 .wines {
-  padding: 10px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 15px;
@@ -111,7 +112,7 @@ a {
 
 .wine-details .details {
   display: grid;
-  grid-template-columns: 1.7fr 1fr;
+  grid-template-columns: 2fr 1fr;
   grid-gap: 15px;
 }
 
@@ -123,6 +124,16 @@ a {
 
 .components h3 {
   text-align: left;
+  margin-bottom: 10px;
+}
+
+.components p {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.component-details p {
+  margin-bottom: 8px;
 }
 
 .component-types {
@@ -132,15 +143,16 @@ a {
 
 .component-types ul {
   display: flex;
-  justify-content: space-between;
 }
 
 .component-types li {
   list-style: none;
+  flex-grow: 1;
 }
 
 .component-types button {
   font-size: 0.8rem;
+  width: 100%;
   padding: 10px;
   border: none;
   background: #333;
@@ -151,15 +163,11 @@ a {
 
 .component-types .selected {
   background: #535353;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
   border-bottom-color: #fff;
 }
 
 .component-types button:hover {
   background: #535353;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
 }
 
 .component-details {
@@ -175,7 +183,8 @@ a {
 }
 
 .others {
-  text-align: left;
+  display: flex;
+  justify-content: space-between;
 }
 
 @media only screen and (max-width: 768px) and (min-width: 601px) {
@@ -184,6 +193,11 @@ a {
   }
   .wines {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .others {
+    flex-direction: column;
+    text-align: left;
   }
 }
 
@@ -199,9 +213,14 @@ a {
     grid-template-columns: 1fr;
   }
 
+  .others {
+    flex-direction: column;
+    text-align: left;
+  }
+
   .components {
     margin: 0;
     grid-column: 1 / span 1;
-    grid-row: 3 / span 1;
+    grid-row: 2 / span 1;
   }
 }
