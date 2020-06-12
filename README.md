@@ -18,12 +18,13 @@
 - CSS3 for styling
 - Axios for HTTP requests
 ### BackEnd
-- Connects to a NodeJS API
-- 5 API Endpoints that provides 
--- List of all Wines
--- Year BreakDown for a given wine
--- Variety BreakDown for a given wine
--- Region BreakDown for a given wine
--- Year & Variety BreakDown for a given wine
-- ExpressJs used as a Server
-- NoSQL Database MongoDB used for datastore
+* Connects to a NodeJS API
+* ExpressJs used as a Server
+* NoSQL Database MongoDB used for datastore
+* 5 API Endpoints that provides 
+  * List of all Wines
+  * Year BreakDown for a given wine
+  * Variety BreakDown for a given wine
+  * Region BreakDown for a given wine
+  * Year & Variety BreakDown for a given wine
+
