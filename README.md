@@ -4,6 +4,12 @@
 
 ![To Do App](screenshot.jpg)
 
+## Installation
+* Pull down the repository to your local machine.
+* Run `npm install` on the main folder. Go to client folder `cd client` and run `npm install` again this time for the front end
+* Get back to the main folder `cd ..` and run `npm run dev`. This should start both the server and the front end app concurrently and your app should be available at `http://localhost:3000`
+
+
 ## Features
 - Provides a list of all wines in the database
 - Search functionality that instantly filters the wine list based on Lot Code & Description
