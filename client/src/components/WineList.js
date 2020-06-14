@@ -66,8 +66,8 @@ const WineList = () => {
                 <img src={wineImage} alt="Wine" />
               </div>
               <div className="details">
-                <p>{wine.lotCode}</p>
                 <p>{wine.description}</p>
+                <p>Lot Code - {wine.lotCode}</p>
               </div>
             </Link>
           </div>

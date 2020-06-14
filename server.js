@@ -132,7 +132,7 @@ app.get('/wine/:wine_id/yearvariety', async (req, res) => {
     }
     wine.components.forEach(component => breakDown(component));
     res.send({
-      breakDownType: 'year and variety',
+      breakDownType: 'yearvariety',
       breakdown: yearAndVarietyBreakdown.sort(
         compareValues('percentage', false)
       )

@@ -9,7 +9,7 @@ const WineComponents = ({
   description
 }) => {
   const [selectedComponent, setSelectedComponent] = useState('year');
-  const [breakDown, setBreakDown] = useState([]);
+  const [breakDowns, setBreakDowns] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,7 +19,7 @@ const WineComponents = ({
           console.log(response);
           return;
         }
-        setBreakDown(response.data.breakdown);
+        setBreakDowns([response.data]);
       } catch (error) {
         console.log(error);
       }
@@ -27,6 +27,9 @@ const WineComponents = ({
 
     fetchData();
   }, [id]);
+
+  const exists = type =>
+    breakDowns.findIndex(breakDown => breakDown.breakDownType === type) !== -1;
 
   const changeSelection = type => {
     const fetchData = async () => {
@@ -36,14 +39,16 @@ const WineComponents = ({
           console.log(response);
           return;
         }
-        setBreakDown(response.data.breakdown);
+
+        const newBreakDowns = [...breakDowns, response.data];
+        setBreakDowns(newBreakDowns);
       } catch (error) {
         console.log(error);
       }
     };
-
-    fetchData();
-
+    if (!exists(type)) {
+      fetchData();
+    }
     setSelectedComponent(type);
     return;
   };
@@ -96,32 +101,56 @@ const WineComponents = ({
         </div>
         <div className="component-details">
           <div className={selectedComponent === 'year' ? '' : 'hidden'}>
-            {breakDown.map((item, index) => (
-              <p key={index}>
-                {item.year} - {item.percentage}%
-              </p>
-            ))}
+            {!isLoading &&
+              breakDowns.findIndex(
+                breakDown => breakDown.breakDownType === 'year'
+              ) !== -1 &&
+              breakDowns
+                .find(breakDown => breakDown.breakDownType === 'year')
+                .breakdown.map((item, index) => (
+                  <p key={index}>
+                    {item.year} - {item.percentage}%
+                  </p>
+                ))}
           </div>
           <div className={selectedComponent === 'variety' ? '' : 'hidden'}>
-            {breakDown.map((item, index) => (
-              <p key={index}>
-                {item.variety} - {item.percentage}%
-              </p>
-            ))}
+            {!isLoading &&
+              breakDowns.findIndex(
+                breakDown => breakDown.breakDownType === 'variety'
+              ) !== -1 &&
+              breakDowns
+                .find(breakDown => breakDown.breakDownType === 'variety')
+                .breakdown.map((item, index) => (
+                  <p key={index}>
+                    {item.variety} - {item.percentage}%
+                  </p>
+                ))}
           </div>
           <div className={selectedComponent === 'region' ? '' : 'hidden'}>
-            {breakDown.map((item, index) => (
-              <p key={index}>
-                {item.region} - {item.percentage}%
-              </p>
-            ))}
+            {!isLoading &&
+              breakDowns.findIndex(
+                breakDown => breakDown.breakDownType === 'region'
+              ) !== -1 &&
+              breakDowns
+                .find(breakDown => breakDown.breakDownType === 'region')
+                .breakdown.map((item, index) => (
+                  <p key={index}>
+                    {item.region} - {item.percentage}%
+                  </p>
+                ))}
           </div>
           <div className={selectedComponent === 'yearvariety' ? '' : 'hidden'}>
-            {breakDown.map((item, index) => (
-              <p key={index}>
-                {item.year} {item.variety} - {item.percentage}%
-              </p>
-            ))}
+            {!isLoading &&
+              breakDowns.findIndex(
+                breakDown => breakDown.breakDownType === 'yearvariety'
+              ) !== -1 &&
+              breakDowns
+                .find(breakDown => breakDown.breakDownType === 'yearvariety')
+                .breakdown.map((item, index) => (
+                  <p key={index}>
+                    {item.year} {item.variety} - {item.percentage}%
+                  </p>
+                ))}
           </div>
         </div>
       </div>
