@@ -4,6 +4,12 @@
 
 ![To Do App](screenshot.jpg)
 
+## Installation
+* Pull down the repository to your local machine.
+* Run `npm install` on the main folder. Go to client folder `cd client` and run `npm install` again this time for the front end
+* Get back to the main folder `cd ..` and run `npm run dev`. This should start both the server and the front end app concurrently and your app should be available at `http://localhost:3000`
+
+
 ## Features
 - Provides a list of all wines in the database
 - Search functionality that instantly filters the wine list based on Lot Code & Description
@@ -21,10 +27,11 @@
 * Connects to a NodeJS API
 * ExpressJs used as a Server
 * NoSQL Database MongoDB used for datastore
-* 5 API Endpoints that provides 
-  * List of all Wines
-  * Year BreakDown for a given wine
-  * Variety BreakDown for a given wine
-  * Region BreakDown for a given wine
-  * Year & Variety BreakDown for a given wine
+* 6 API Endpoints that provides 
+  * `/wine` - List of all Wines
+  * `/wine/:id` - Details of a given wine 
+  * `/wine/:id/year` - Year BreakDown for a given wine 
+  * `/wine/:id/variety` - Variety BreakDown for a given wine 
+  * `/wine/:id/region` - Region BreakDown for a given wine 
+  * `/wine/:id/yearvariety` - Year & Variety BreakDown for a given wine 
 
